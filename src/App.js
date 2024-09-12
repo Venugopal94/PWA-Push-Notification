@@ -8,13 +8,14 @@ export default function App() {
   const [showNotificationBanner, setShowNotificationBanner] = useState(Notification.permission === 'default');
 
   useEffect(() => {
-    // onForegroundMessage()
-    //   .then((payload) => {
-    //     console.log('Received foreground message: ', payload);
-    //     const { notification: { title, body } } = payload;
-    //     toast(<ToastifyNotification title={title} body={body} />);
-    //   })
-    //   .catch(err => console.log('An error occured while retrieving foreground message. ', err));
+    onForegroundMessage()
+      .then((payload) => {
+        console.log('Received foreground message: ', payload);
+        const { notification: { title, body } } = payload;
+        toast(<ToastifyNotification title={title} body={body} />);
+      })
+      .catch(err => console.log('An error occured while retrieving foreground message. ', err));
+      handleGetFirebaseToken();
   }, []);
 
   const handleGetFirebaseToken = () => {
